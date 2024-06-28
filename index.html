@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <style>
+        .bg-grey{
+            background-color: rgb(208, 204, 204);
+        }
+    </style>
+    <body class="p-6">
+        <div>  
+            <input class="bg-grey placeholder-white" placeholder="please enter a number" type="number" id="array1">
+            <input class="bg-grey placeholder-white" placeholder="please enter a number" type="number" id="array2">
+            <input class="bg-grey placeholder-white" placeholder="please enter a number" type="number" id="array3">
+            <input class="bg-grey placeholder-white" placeholder="please enter a number" type="number" id="array4">
+        </div>
+        <div class="mt-2">
+            <button class="bg-blue-500 w-24 text-white py-2 px-4 rounded-md" id="sort" onclick="sort()">
+                sort
+            </button>
+            <button class="bg-blue-500 w-24 text-white py-2 px-4 rounded-md" id="reduce" onclick="reduce()">
+                reduce
+            </button>
+            <button class="bg-blue-500 w-24 text-white py-2 px-4 rounded-md" id="map" onclick="map()">
+                map
+            </button>
+            <button class="bg-blue-500 w-24 text-white py-2 px-4 rounded-md" id="filter" onclick="filter()">
+                filter
+            </button>
+            <button class="bg-blue-500 w-24 text-white py-2 px-4 rounded-md" id="indexOf" onclick="indexOf()">
+                indexOf
+            </button>
+            <div id="extra"></div>
+        </div>
+    </body>
+    <script>
+        function sort(){
+            var reduce = document.getElementById('reduce');
+            var map = document.getElementById('map');
+            var filter = document.getElementById('filter');
+            var indexOf = document.getElementById('indexOf');
+            reduce.style.display = "none";
+            map.style.display = "none";
+            filter.style.display = "none";
+            indexOf.style.display = "none";
+            var html = `
+            <button class="bg-blue-500 w-43 text-white mt-2 py-2 px-4 rounded-md" onclick="sort_calc(0)">
+                Accending Order
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="sort_calc(1)">
+                Descending Order
+            </button>`;
+            document.getElementById('extra').innerHTML = html;
+        }
+        function reduce(){
+            var sort = document.getElementById('sort');
+            var map = document.getElementById('map');
+            var filter = document.getElementById('filter');
+            var indexOf = document.getElementById('indexOf');
+            sort.style.display = "none";
+            map.style.display = "none";
+            filter.style.display = "none";
+            indexOf.style.display = "none";
+            var html = `
+            <button class="bg-blue-500 w-43 text-white mt-2 py-2 px-4 rounded-md" onclick="reduce_calc(0)">
+                Addition
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="reduce_calc(1)">
+                Subtraction
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="reduce_calc(2)">
+                Multiplication
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="reduce_calc(3)">
+                Division
+            </button>`;
+            document.getElementById('extra').innerHTML = html;
+        }
+        function map(){
+            var sort = document.getElementById('sort');
+            var reduce = document.getElementById('reduce');
+            var filter = document.getElementById('filter');
+            var indexOf = document.getElementById('indexOf');
+            sort.style.display = "none";
+            reduce.style.display = "none";
+            filter.style.display = "none";
+            indexOf.style.display = "none";
+            var html = `
+            <button class="bg-blue-500 w-43 text-white mt-2 py-2 px-4 rounded-md" onclick="map_calc(0)">
+                Addition
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="map_calc(1)">
+                Subtraction
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="map_calc(2)">
+                Multiplication
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="map_calc(3)">
+                Division
+            </button>
+            <input class="bg-grey text-white placeholder-white" placeholder="please enter a number" type="number" id="calculation_map">`;
+            document.getElementById('extra').innerHTML = html;
+        }
+        function filter(){
+            var sort = document.getElementById('sort');
+            var map = document.getElementById('map');
+            var reduce = document.getElementById('reduce');
+            var indexOf = document.getElementById('indexOf');
+            sort.style.display = "none";
+            reduce.style.display = "none";
+            map.style.display = "none";
+            indexOf.style.display = "none";
+            var html = `
+            <button class="bg-blue-500 w-43 text-white mt-2 py-2 px-4 rounded-md" onclick="filter_calc(0)">
+                Filter Lesser Than 30 
+            </button>
+            <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="filter_calc(1)">
+                Filter Greater Than 30
+            </button><br>`;
+            document.getElementById('extra').innerHTML = html;
+        }
+        function indexOf(){
+            var sort = document.getElementById('sort');
+            var reduce = document.getElementById('reduce');
+            var filter = document.getElementById('filter');
+            var map = document.getElementById('map');
+            sort.style.display = "none";
+            reduce.style.display = "none";
+            filter.style.display = "none";
+            map.style.display = "none";
+            var html = `
+            <input class="bg-grey text-white placeholder-white mt-2" placeholder="please enter a number" type="number" id="indexof_cal"><br>
+            <button class="bg-blue-500 w-43 text-white py-2 mt-2 px-4 rounded-md" onclick="indexOf_calc()">
+                Submit
+            </button>`;
+            document.getElementById('extra').innerHTML = html;
+        }
+        function sort_calc(value){
+            document.getElementById("sort").style.display = "none";
+            array1 = document.getElementById("array1").value;
+            array2 = document.getElementById("array2").value;
+            array3 = document.getElementById("array3").value;
+            array4 = document.getElementById("array4").value;
+            var result = [array1,array2,array3,array4];
+            if (value === 0){
+                result.sort((a, b) => a - b);
+            }else{
+                result.sort((a, b) => b - a);
+            }
+            document.getElementById("extra").innerHTML = result;
+        }
+        function reduce_calc(value){
+            document.getElementById("reduce").style.display = "none";
+            array1 = document.getElementById("array1").value;
+            array2 = document.getElementById("array2").value;
+            array3 = document.getElementById("array3").value;
+            array4 = document.getElementById("array4").value;
+            var array = [array1,array2,array3,array4];
+            if(value === 0){
+                var result = array.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
+            }else if(value === 1){
+                var result = array.reduce((accumulator, currentValue) => accumulator - parseInt(currentValue), 0);
+            }else if(value === 2){
+                var result = array.reduce((accumulator, currentValue) => accumulator * parseInt(currentValue), 1);
+            }else{
+                var result = array.reduce((accumulator, currentValue) => accumulator / parseInt(currentValue), 1);
+            }
+            console.log(result);
+            document.getElementById("extra").innerHTML = result;
+        }
+        function map_calc(value){
+            document.getElementById("map").style.display = "none";
+            array1 = document.getElementById("array1").value;
+            array2 = document.getElementById("array2").value;
+            array3 = document.getElementById("array3").value;
+            array4 = document.getElementById("array4").value;
+            values = document.getElementById("calculation_map").value;
+            var numbers = [array1,array2,array3,array4];
+
+            if(value === 0){
+                var result = numbers.map((num) => {
+                    return num + parseInt(values);
+                });
+            }else if(value === 1){
+                var result = numbers.map((num) => {
+                    return num - parseInt(values);
+                });
+            }else if(value === 2){
+                var result = numbers.map((num) => {
+                    return num * parseInt(values);
+                });
+            }else{
+                var result = numbers.map((num) => {
+                    return num / parseInt(values);
+                });
+            }
+            document.getElementById("extra").innerHTML = result;
+        }
+        function filter_calc(value){
+            document.getElementById("filter").style.display = "none";
+            array1 = document.getElementById("array1").value;
+            array2 = document.getElementById("array2").value;
+            array3 = document.getElementById("array3").value;
+            array4 = document.getElementById("array4").value;
+            var numbers = [array1,array2,array3,array4];
+
+            if(value === 0){
+                var result = numbers.filter((num) => {
+                    return num <= 30;
+                });
+            }else{
+                var result = numbers.filter((num) => {
+                    return num >= 30;
+                });
+            }
+            document.getElementById("extra").innerHTML = result;
+        }
+        function indexOf_calc(){
+            document.getElementById("indexOf").style.display = "none";
+            array1 = document.getElementById("array1").value;
+            array2 = document.getElementById("array2").value;
+            array3 = document.getElementById("array3").value;
+            array4 = document.getElementById("array4").value;
+            value = document.getElementById("indexof_cal").value;
+            var numbers = [array1,array2,array3,array4];
+
+            var result = numbers.indexOf(value);
+            document.getElementById("extra").innerHTML = result;
+        }
+    </script>
+</html>
