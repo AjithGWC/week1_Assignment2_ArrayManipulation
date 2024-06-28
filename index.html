@@ -115,11 +115,12 @@
             indexOf.style.display = "none";
             var html = `
             <button class="bg-blue-500 w-43 text-white mt-2 py-2 px-4 rounded-md" onclick="filter_calc(0)">
-                Filter Lesser Than 30 
+                Lesser Than
             </button>
             <button class="bg-blue-500 w-43 text-white py-2 px-4 rounded-md" onclick="filter_calc(1)">
-                Filter Greater Than 30
-            </button><br>`;
+                Greater Than
+            </button>
+            <input class="bg-grey text-white placeholder-white mt-2" placeholder="please enter a number" type="number" id="filter_cal">`;
             document.getElementById('extra').innerHTML = html;
         }
         function indexOf(){
@@ -140,10 +141,10 @@
         }
         function sort_calc(value){
             document.getElementById("sort").style.display = "none";
-            array1 = document.getElementById("array1").value;
-            array2 = document.getElementById("array2").value;
-            array3 = document.getElementById("array3").value;
-            array4 = document.getElementById("array4").value;
+            var array1 = parseInt(document.getElementById('array1').value);
+            var array2 = parseInt(document.getElementById('array2').value);
+            var array3 = parseInt(document.getElementById('array3').value);
+            var array4 = parseInt(document.getElementById('array4').value);
             var result = [array1,array2,array3,array4];
             if (value === 0){
                 result.sort((a, b) => a - b);
@@ -154,10 +155,10 @@
         }
         function reduce_calc(value){
             document.getElementById("reduce").style.display = "none";
-            array1 = document.getElementById("array1").value;
-            array2 = document.getElementById("array2").value;
-            array3 = document.getElementById("array3").value;
-            array4 = document.getElementById("array4").value;
+            var array1 = parseInt(document.getElementById('array1').value);
+            var array2 = parseInt(document.getElementById('array2').value);
+            var array3 = parseInt(document.getElementById('array3').value);
+            var array4 = parseInt(document.getElementById('array4').value);
             var array = [array1,array2,array3,array4];
             if(value === 0){
                 var result = array.reduce((accumulator, currentValue) => accumulator + parseInt(currentValue), 0);
@@ -173,11 +174,11 @@
         }
         function map_calc(value){
             document.getElementById("map").style.display = "none";
-            array1 = document.getElementById("array1").value;
-            array2 = document.getElementById("array2").value;
-            array3 = document.getElementById("array3").value;
-            array4 = document.getElementById("array4").value;
-            values = document.getElementById("calculation_map").value;
+            var array1 = parseInt(document.getElementById('array1').value);
+            var array2 = parseInt(document.getElementById('array2').value);
+            var array3 = parseInt(document.getElementById('array3').value);
+            var array4 = parseInt(document.getElementById('array4').value);
+            var values = parseInt(document.getElementById("calculation_map").value);
             var numbers = [array1,array2,array3,array4];
 
             if(value === 0){
@@ -201,30 +202,31 @@
         }
         function filter_calc(value){
             document.getElementById("filter").style.display = "none";
-            array1 = document.getElementById("array1").value;
-            array2 = document.getElementById("array2").value;
-            array3 = document.getElementById("array3").value;
-            array4 = document.getElementById("array4").value;
+            var array1 = parseInt(document.getElementById('array1').value);
+            var array2 = parseInt(document.getElementById('array2').value);
+            var array3 = parseInt(document.getElementById('array3').value);
+            var array4 = parseInt(document.getElementById('array4').value);
+            var values = parseInt(document.getElementById('filter_cal').value);
             var numbers = [array1,array2,array3,array4];
 
             if(value === 0){
                 var result = numbers.filter((num) => {
-                    return num <= 30;
+                    return num <= values;
                 });
             }else{
                 var result = numbers.filter((num) => {
-                    return num >= 30;
+                    return num >= values;
                 });
             }
             document.getElementById("extra").innerHTML = result;
         }
         function indexOf_calc(){
             document.getElementById("indexOf").style.display = "none";
-            array1 = document.getElementById("array1").value;
-            array2 = document.getElementById("array2").value;
-            array3 = document.getElementById("array3").value;
-            array4 = document.getElementById("array4").value;
-            value = document.getElementById("indexof_cal").value;
+            var array1 = parseInt(document.getElementById('array1').value);
+            var array2 = parseInt(document.getElementById('array2').value);
+            var array3 = parseInt(document.getElementById('array3').value);
+            var array4 = parseInt(document.getElementById('array4').value);
+            var value = parseInt(document.getElementById("indexof_cal").value);
             var numbers = [array1,array2,array3,array4];
 
             var result = numbers.indexOf(value);
